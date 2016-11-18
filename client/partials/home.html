@@ -1,0 +1,40 @@
+<style type="text/css">
+	#table {
+		border: 1px solid black;
+		width: 350px;
+		margin-top: 15px;
+	};
+</style>
+
+
+<!-- bind the controller that will be handling this partial html -->
+<div ng-controller='friendsController'>
+	<form ng-submit='addFriend()'>
+		Name:<input type="text" name="name" ng-model='newUser.name'>
+		<input type="submit" value="Add Friend!">
+	</form>
+<!-- loop through the friends array of objects to grab each individual item -->
+	<div ng-repeat ='friend in friends'>
+		<table id="table">
+			<thead>
+				<tr>
+					<th>Name:</th>
+					<th>Show:</th>
+					<th>Update:</th>
+					<th>Delete:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				<!-- pass in the object id in the a links to load another partial page on the index html -->
+					<td>{{friend.name}}</td>				
+					<td><a href="#/friend/{{friend._id}}">Show</a></td>
+					<td><a href="#/friend/edit/{{friend._id}}">Update</a></td>
+					<!-- pass in the friend id and idx number in the function delete friend to make it seem like the delete feature is working instanteously -->
+					<td><button ng-click="deleteFriend($index,friend._id)">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>	

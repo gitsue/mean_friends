@@ -1,0 +1,9 @@
+<div ng-controller='friendsController'>
+	<p>Friend Profile Dashboard:</p>
+	<form ng-submit='updateFriend()'>
+		Name:<input type="text" name="name" value="{{oneFriend.name}}" ng-model='oneFriend.name'>
+		<input type="submit" value="Update!">
+	</form>
+	{{message}}
+	<a href="#/home">Home</a>
+</div>
